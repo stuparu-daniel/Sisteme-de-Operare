@@ -14,8 +14,6 @@
 #define IMAGE_SIZES 18
 #define MAX_BUFFER_SIZE 4096
 
-int totalLines = 0;
-
 void rigths(struct stat fileInfo, char* user, char* group, char* other)
 {
     strcat(user, (fileInfo.st_mode & S_IRUSR) ? "R" : "-");
@@ -379,7 +377,7 @@ void processEntry(const char *entryName, const char *inputDirectory, const char 
 
                 if (WIFEXITED(status)) {
                     printf("S-a încheiat procesul cu pid-ul %d si codul %d\n", who, WEXITSTATUS(status));
-                    printf("Au fost identificate in total %d propozitii corecte care contin caracterul %c\n", totalLines, scriptArgument);
+                    printf("Au fost identificate in total %d propozitii corecte care contin caracterul %c\n", WEXITSTATUS(status), scriptArgument);
                 } else {
                     printf("Procesul cu pid-ul %d si codul %d nu s-a încheiat normal\n", who, WEXITSTATUS(status));
                 }
